@@ -13,6 +13,9 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/ng-img-crop-full-extended/compile/minified/ng-img-crop.css" />
+      <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+      <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -57,27 +60,88 @@
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/satellizer/dist/satellizer.js"></script>
+      <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+      <script src="bower_components/ng-img-crop-full-extended/compile/minified/ng-img-crop.js"></script>
+      <script src="bower_components/blob-polyfill/Blob.js"></script>
+      <script src="bower_components/file-saver.js/FileSaver.js"></script>
+      <script src="bower_components/angular-file-saver/dist/angular-file-saver.bundle.js"></script>
+      <script src="bower_components/webcam/dist/webcam.min.js"></script>
+      <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+      <script src="bower_components/angular-animate/angular-animate.js"></script>
+      <script src="bower_components/angular-aria/angular-aria.js"></script>
+      <script src="bower_components/angular-messages/angular-messages.js"></script>
+      <script src="bower_components/angular-material/angular-material.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
-    <!--script src="bower_components/bootstrap/dist/js/bootstrap.js" charset="utf-8"></script-->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js" charset="utf-8"></script>
     <!-- build:js(.tmp) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
       <script src="components/util/util.module.js"></script>
+      <script src="app/Webcam/Webcam.service.js"></script>
+      <script src="app/administrador/administrador.service.js"></script>
+      <script src="app/administrador/administradores-create/administradores-create.controller.js"></script>
+      <script src="app/administrador/administradores-create/administradores-create.js"></script>
+      <script src="app/administrador/administradores-list/administradores-list.controller.js"></script>
+      <script src="app/administrador/administradores-list/administradores-list.js"></script>
+      <script src="app/administrador/administradores-update/administradores-update.controller.js"></script>
+      <script src="app/administrador/administradores-update/administradores-update.js"></script>
       <script src="app/app.constant.js"></script>
       <script src="app/ciudades/ciudades-list/ciudades-list.controller.js"></script>
       <script src="app/ciudades/ciudades-list/ciudades-list.js"></script>
       <script src="app/ciudades/ciudades.service.js"></script>
+      <script src="app/clasesProductos/claseProductos-create/claseProductos-create.controller.js"></script>
+      <script src="app/clasesProductos/claseProductos-create/claseProductos-create.js"></script>
+      <script src="app/clasesProductos/claseProductos-list/claseProductos-list.controller.js"></script>
+      <script src="app/clasesProductos/claseProductos-list/claseProductos-list.js"></script>
+      <script src="app/clasesProductos/clasesProductos.service.js"></script>
+      <script src="app/dashboard/administrador/administrador.controller.js"></script>
+      <script src="app/dashboard/administrador/administrador.js"></script>
+      <script src="app/dashboard/empleado/empleado.controller.js"></script>
+      <script src="app/dashboard/empleado/empleado.js"></script>
       <script src="app/departamentos/departamentos-list/departamentos-list.controller.js"></script>
       <script src="app/departamentos/departamentos-list/departamentos-list.js"></script>
       <script src="app/departamentos/departamentos.service.js"></script>
+      <script src="app/empleados/empleados-create/empleados-create.controller.js"></script>
+      <script src="app/empleados/empleados-create/empleados-create.js"></script>
+      <script src="app/empleados/empleados-list/empleados-list.controller.js"></script>
+      <script src="app/empleados/empleados-list/empleados-list.js"></script>
+      <script src="app/empleados/empleados-update/empleados-update.controller.js"></script>
+      <script src="app/empleados/empleados-update/empleados-update.js"></script>
+      <script src="app/empleados/empleados.service.js"></script>
+      <script src="app/facturas/factura-create/factura-create.controller.js"></script>
+      <script src="app/facturas/factura-create/factura-create.js"></script>
+      <script src="app/facturas/factura-list/factura-list.controller.js"></script>
+      <script src="app/facturas/factura-list/factura-list.js"></script>
+      <script src="app/facturas/facturas-update/facturas-update.controller.js"></script>
+      <script src="app/facturas/facturas-update/facturas-update.js"></script>
+      <script src="app/facturas/facturas.service.js"></script>
+      <script src="app/forbidden/forbidden.controller.js"></script>
+      <script src="app/forbidden/forbidden.js"></script>
       <script src="app/login/login.controller.js"></script>
       <script src="app/login/login.js"></script>
       <script src="app/main/main.controller.js"></script>
       <script src="app/main/main.js"></script>
+      <script src="app/pedidos/pedidos-create/pedidos-create.controller.js"></script>
+      <script src="app/pedidos/pedidos-create/pedidos-create.js"></script>
+      <script src="app/pedidos/pedidos-list/pedidos-list.controller.js"></script>
+      <script src="app/pedidos/pedidos-list/pedidos-list.js"></script>
+      <script src="app/pedidos/pedidos.service.js"></script>
+      <script src="app/productos/productos-create/productos-create.controller.js"></script>
+      <script src="app/productos/productos-create/productos-create.js"></script>
+      <script src="app/productos/productos-list/productos-list.controller.js"></script>
+      <script src="app/productos/productos-list/productos-list.js"></script>
+      <script src="app/productos/productos-update/productos-update.controller.js"></script>
+      <script src="app/productos/productos-update/productos-update.js"></script>
+      <script src="app/productos/productos.service.js"></script>
       <script src="app/tiposDocumentos/tiposDocumentos-list/tiposDocumentos-list.controller.js"></script>
       <script src="app/tiposDocumentos/tiposDocumentos-list/tiposDocumentos-list.js"></script>
       <script src="app/tiposDocumentos/tiposDocumentos.service.js"></script>
+      <script src="app/upload-file/upload-file-productos/upload-file-productos.controller.js"></script>
+      <script src="app/upload-file/upload-file-productos/upload-file-productos.js"></script>
+      <script src="app/upload-file/upload-file-user/upload-file.component.js"></script>
+      <script src="app/upload-file/upload-file.routes.js"></script>
+      <script src="app/upload-file/upload-file/upload-file.component.js"></script>
       <script src="app/usuarios/usuarios-create/usuarios-create.controller.js"></script>
       <script src="app/usuarios/usuarios-create/usuarios-create.js"></script>
       <script src="app/usuarios/usuarios-list/usuarios-list.controller.js"></script>
@@ -86,9 +150,12 @@
       <script src="app/usuarios/usuarios-update/usuarios-update.js"></script>
       <script src="app/usuarios/usuarios.service.js"></script>
       <script src="auth/auth.service.js"></script>
+      <script src="components/Upload_File/upload_imagen.js"></script>
       <script src="components/footer/footer.directive.js"></script>
       <script src="components/modal/modal.service.js"></script>
       <script src="components/navbar/navbar.controller.js"></script>
+      <script src="components/slider/slider.controller.js"></script>
+      <script src="components/slider/slider.js"></script>
       <script src="components/util/util.service.js"></script>
       <!-- endinjector -->
     <!-- endbuild -->

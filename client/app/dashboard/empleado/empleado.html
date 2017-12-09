@@ -1,0 +1,48 @@
+<div class="container Empleado">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      <ul>
+        <li>
+          <a ui-sref="pedidos-create">pedidos por mesa</a>
+        </li>
+        <li>
+          <a ui-sref="pedidos-create"> pedido individual</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-xs-2 col-sm-8">
+
+  <div ng-cloak>
+    <md-content class="" layout-xs="column" layout="row">
+      <!--div flex-xs flex-gt-xs="50" layout="column">
+
+      <md-card>
+     <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+     <md-card-actions layout="row" layout-align="end center">
+       <md-button class="md-icon-button" aria-label="Favorite">
+         <md-icon md-svg-icon=""></md-icon>
+       </md-button>
+       <md-button class="md-icon-button" aria-label="Settings">
+         <md-icon md-svg-icon=""></md-icon>
+       </md-button>
+       <md-button class="md-icon-button" aria-label="Share">
+         <md-icon md-svg-icon="assets/images/menu.svg"></md-icon>
+       </md-button>
+     </md-card-actions>
+   </md-card>
+ </div-->
+
+ <md-list class="OrdenMesas">
+  <md-list-item class="md-2-line veggie-option" ng-repeat="veg in vm.mesas" layout="row" layout-wrap="">
+    <button class="md-item-text md-whiteframe-z1 Mesas" flex="">
+      <h3>{{veg.numero}}</h3>
+      <p>{{veg.estado}}</p>
+    </button>
+  </md-list-item>
+</md-list>
+ </md-content>
+</div>
+
+    </div>
+  </div>
+</div>

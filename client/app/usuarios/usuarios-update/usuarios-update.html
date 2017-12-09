@@ -1,1 +1,58 @@
-<div>This is the usuarios-update view.</div>
+<section class="Create" >
+  <form class="Create-form" name="userForm" >
+    <div class="Create-formTop">
+
+      <p class="Create-formTitle">Actualiza tu cuenta</p>
+    </div>
+    <div class="Create-formLeft">
+      <select class="Create-formSelect" name="typeDocument" ng-model="vm.user.tiposDocumentosId" required>
+        <option class="Create-formOption" ng-value="item.id" ng-repeat = "item in vm.DocumentoSeleccionado">{{item.descripcion}}</option>
+        <option value="" disabled selected>Tipo de documento</option>
+      </select>
+      <input class="Create-formInput" name="name" type="text" ng-model="vm.user.nombre" placeholder="Nombre"
+             ng-pattern="/^[a-zA-Z\s]*$/" required>
+      <span class="Error-formMessage" ng-show="userForm.name.$error.pattern">Este campo solo admite letras.</span>
+      <span class="Error-formMessage" ng-show="userForm.name.$touched && userForm.name.$invalid">Por favor, ingrese su nombre.</span>
+
+      <select name="departament" class="Create-formSelect" ng-model="vm.DepartamentosId.id" ng-change="vm.getCities()">
+        <option class="Create-formOption" ng-value="{{item.id}}" ng-repeat="item in vm.departamentoSeleccionado">{{item.nombre}}</option>
+        <option value="" disable selected>Departamento</option>
+      </select>
+
+      <select class="Create-formSelect" name="city" ng-model="vm.user.idCiudad.id" required>
+        <option class="Create-formOption" ng-value ="item.id" ng-repeat = "item in vm.Seleccionciudad"> {{item.nombre}}</option>
+        <option value="" disabled selected>Ciudad</option>
+      </select>
+
+      <select class="Create-formSelect" placeholder="Sexo" name="genre" ng-model="vm.user.genero" required>
+        <option class="Create-formOption" value="F">F</option>
+        <option class="Create-formOption" value="M">M</option>
+
+        <option value="" disabled selected>Género</option>
+      </select>
+    </div>
+    <div class="Create-formRight">
+      <input class="Create-formInput" name="numDocument" type="text" ng-model="vm.user.numDocumento"
+             ng-pattern="/^[0-9]*$/" minlenght="5" maxlength="15" placeholder="Numero de documento" required>
+      <span class="Error-formMessage" ng-show="userForm.numDocument.$error.pattern">Este campo solo admite numeros.</span>
+      <span class="Error-formMessage" ng-show="userForm.numDocument.$touched && userForm.numDocument.$invalid">Debe ingresar un numero de documento valido.</span>
+    <p>{{vm.mensaje}}</p>
+    <div ng-if="vm.errors.doc">
+      <p>El número de documento ya se encuentra registrado</p>
+    </div>
+
+      <input class="Create-formInput" name="lastName" type="text" ng-model="vm.user.apellido" placeholder="Apellido"
+             ng-pattern="/^[a-zA-Z\s]*$/" required>
+      <span class="Error-formMessage" ng-show="userForm.lastName.$error.pattern">Este campo solo admite letras.</span>
+      <span class="Error-formMessage" ng-show="userForm.lastName.$touched && userForm.lastName.$invalid">Por favor, ingrese su apellido.</span>
+
+      <input class="Create-formInput" name="email" type="email" ng-model="vm.user.email" placeholder="Correo electronico" required>
+      <span class="Error-formMessage" ng-show="userForm.email.$touched && userForm.email.$invalid">El email es invalido.</span>
+
+      <input class="Create-formInput" name="password" type="password" ng-model="vm.user.password" placeholder="Crea una contraseña" required>
+      <span class="Error-formMessage" ng-show="userForm.password.$touched && userForm.password.$invalid">Debe ingresar una contraseña.</span>
+
+      <button class="Create-formButton" ng-click="vm.updateUser()">Actualizar Cuenta</button>
+    </div>
+  </form>
+</section>

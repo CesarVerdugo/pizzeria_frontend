@@ -38,11 +38,15 @@ class UsuariosCreateComponent {
 
   }
 
+
+
+
+
+
   getCities(){
-    console.log(this.departamentosId);
-    this.ciudadesService.getCities({departamentosId:this.departamentosId}).$promise
+    console.log(this.DepartamentosIdd.id);
+    this.ciudadesService.getCities({idDepartamento:this.DepartamentosIdd.id}).$promise
     .then(response => {
-      console.log('Ciudades', response);
       this.Seleccionciudad = response;
     })
     .catch(err => console.error(err));
@@ -50,7 +54,7 @@ class UsuariosCreateComponent {
 
 crearUsuario(){
 this.usuario.activo=1;
-this.usuario.rolesList = [{id:"ADMIN"}];
+//this.usuario.rolList = [{id:"ADMIN"}];
 console.log(this.usuario.tiposDocumentosId.id);
 console.log(this.usuario);
 this.usuariosService.save(this.usuario).$promise

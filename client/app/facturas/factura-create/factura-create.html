@@ -1,0 +1,54 @@
+
+
+<div class="container Facturas">
+
+  <div class="row">
+    <div class=" col-xs-12 col-sm-6 col-sm-offset-3">
+      <form class="" >
+
+      <input type="text"class="form-control" name="" value="" ng-model="vm.factura.nombre" placeholder="nombre">
+      <input type="text" class="form-control" name="" value=""  ng-model="vm.factura.apellido" placeholder="apellido">
+      <input type="text"  class="form-control"name="" value="" ng-model="vm.factura.numDocumento"placeholder="numero de documento">
+        <select class="form-control" name="" ng-model="vm.factura.usuarioId">
+          <option value="{{item.id}}" ng-repeat="item in vm.listaUsuarios">{{item.nombre}}</option>
+        </select>
+
+        <!-- <select class="form-control" name="" ng-model="vm.factura.idEmpleado.id">
+          <option value="{{item.id}}" ng-repeat="item in vm.listaEmpleados">{{item.nombre}}</option>
+        </select> -->
+
+        <!--select  class="form-control" name="" ng-model="vm.factura.pedidosId.id">
+          <option value="{{item.id}}" ng-repeat="item in vm.listaPedidos">{{item.productosId.nombre}}</option>
+        </select-->
+        <div class="">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <td>codigo</td>
+                <td>nombre</td>
+                <td>precio unitario</td>
+                <td>cantidad</td>
+                <td>valor total</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in vm.listaPedidos track by $index">
+                <td>{{item.productosId.clasesProductosId.codigo}}</td>
+                <td>{{item.productosId.nombre}}</td>
+                <td>{{item.productosId.precio}}</td>
+                <td>{{item.cantidad}}</td>
+                <td>{{item.productosId.precio*item.cantidad}}</td>
+                <!--td><input type="checkbox" name="" ng-value="{{item.id}}" ng-model="vm.factura.productosId.id"></td-->
+              </tr>
+            </tbody>
+          </table>
+          <span>Valor Compra</span> <input type="text" name="" value="" ng-model="vm.factura.totalPagar">
+        </div>
+
+
+
+        <button type="button" name="button" ng-click="vm.crearFactura()">imprimir factura</button>
+      </form>
+    </div>
+  </div>
+</div>

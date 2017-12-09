@@ -9,6 +9,7 @@ class LoginComponent {
   login(){
   console.log('DATOS DE LOGIN ',this.user);
   this.authService.login(this.user);
+  
 }
 }
 

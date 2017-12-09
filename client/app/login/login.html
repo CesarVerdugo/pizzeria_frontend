@@ -2,7 +2,7 @@
   <form class="Login-form" name="userForm">
 
     <h2 class="Login-formTitle">Iniciar Sesión</h2>
-    <input class="Login-formInput" type="text" placeholder="NIT o N° de Documento" name="documentNumber" ng-model="vm.user.numDocumento"
+    <input class="Login-formInput" type="text" placeholder="N° de Documento" name="documentNumber" ng-model="vm.user.numDocumento"
       ng-pattern="/^[0-9]*$/" minlenght="5" maxlength="15" placeholder="Numero de documento" required>
       <span class="Error-formMessage" ng-show="userForm.documentNumber.$error.pattern">Este campo solo admite numeros.</span>
       <span class="Error-formMessage" ng-show="userForm.documentNumber.$touched && userForm.documentNumber.$invalid">Debe ingresar un numero de documento.</span>

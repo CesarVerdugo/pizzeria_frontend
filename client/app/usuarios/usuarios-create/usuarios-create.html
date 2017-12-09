@@ -1,5 +1,5 @@
 <section ng-hide="vm.docSelec()" class="Create" >
-  <form   class="Create-form" name="userForm" ng-submit="userForm.$valid && vm.crearUsuario()" novalidate>
+  <form   class="Create-form" name="userForm"  >
     <div class="Create-formTop">
 
       <p class="Create-formTitle">Crea tu cuenta</p>
@@ -14,20 +14,20 @@
       <span class="Error-formMessage" ng-show="userForm.name.$error.pattern">Este campo solo admite letras.</span>
       <span class="Error-formMessage" ng-show="userForm.name.$touched && userForm.name.$invalid">Por favor, ingrese su nombre.</span>
 
-      <select name="departament" class="Create-formSelect" ng-model="vm.DepartamentosId.id" ng-change="vm.getCities()">
+      <select name="departament" class="Create-formSelect" ng-model="vm.DepartamentosIdd.id" ng-change="vm.getCities()">
         <option class="Create-formOption" ng-value="{{item.id}}" ng-repeat="item in vm.departamentoSeleccionado">{{item.nombre}}</option>
         <option value="" disable selected>Departamento</option>
       </select>
 
-      <select class="Create-formSelect" name="city" ng-model="vm.usuario.ciudadesId.id" required>
+      <select class="Create-formSelect" name="city" ng-model="vm.usuario.idCiudad.id" required>
         <option class="Create-formOption" ng-value ="{{item.id}}" ng-repeat = "item in vm.Seleccionciudad"> {{item.nombre}}</option>
         <option value="" disabled selected>Ciudad</option>
       </select>
 
       <select  class="Create-formSelect" placeholder="Sexo" name="genre" ng-model="vm.usuario.genero" required>
-        <option class="Create-formOption" ng-value="M">M</option>
-        <option class="Create-formOption" ng-value="F">F</option>
-        <option class="Create-formOption" ng-value="O">O</option>
+        <option class="Create-formOption" value="M">M</option>
+        <option class="Create-formOption" value="F">F</option>
+
         <option value="" disabled selected>Género</option>
       </select>
     </div>
@@ -57,7 +57,9 @@
       <input class="Create-formInput" name="password" type="password" ng-model="vm.usuario.password" placeholder="Crea una contraseña" required>
       <span class="Error-formMessage" ng-show="userForm.password.$touched && userForm.password.$invalid">Debe ingresar una contraseña.</span>
 
-      <button class="Create-formButton" type="submit" ng-disabled="userForm.$invalid">Crear Cuenta</button>
+      <!--input type="date" class="group-input"-->
+
+      <button class="Create-formButton"  ng-click="vm.crearUsuario()">Crear Cuenta</button>
     </div>
 
   </form>

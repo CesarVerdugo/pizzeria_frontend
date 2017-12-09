@@ -4,19 +4,21 @@ class NavbarController {
   //start-non-standard
   constructor(authService){
   this.menu = [{
-    'title': 'Home',
+    'title': 'Inicio',
     'state': 'main'
-  },
-];
+    }
+  ];
 
   this.isCollapsed = true;
   //end-non-standard
-  this.authService=authService;
+  this.authService = authService;
+
 
 }}
-NavbarController.$inject=['authService']
+NavbarController.$inject=['authService'];
 angular.module('pizzeriaApp')
   .component('navbar',{
   templateUrl: 'components/navbar/navbar.html',
   controller: NavbarController,
-  controllerAs: 'vm'} );
+  controllerAs: 'vm'
+});

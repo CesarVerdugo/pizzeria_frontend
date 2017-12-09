@@ -8,7 +8,10 @@ return $resource(API+'/api/usuarios/:id',{
   update:{
     method:'PUT'
   }
+
 })
+
+
 }
 usuariosService.$inject=['$resource','API']
 angular.module('pizzeriaApp')

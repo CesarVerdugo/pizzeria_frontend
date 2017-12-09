@@ -1,12 +1,48 @@
-<table>
-  <thead>
-    <tr>
-      <th>nombre</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="item in vm.listaUsuarios">
-      <th>{{item.nombre}}</th>
-    </tr>
-  </tbody>
-</table>
+<div class="Table wrap ListaUsuarios" >
+  <h2>Listado de usuarios</h2>
+  <table class="table table-bordered">
+    <thead class="Table-header">
+      <tr class="Table-rowHeader">
+        <th class="Table-itemHeader">Id</th>
+        <th class="Table-itemHeader">Nombre</th>
+        <th class="Table-itemHeader">Apellido</th>
+        <th class="Table-itemHeader">Email</th>
+        <th class="Table-itemHeader">Tipo de Documento</th>
+        <th class="Table-itemHeader">N.Documento</th>
+        <th class="Table-itemHeader">Genero</th>
+        <th class="Table-itemHeader">celular o fijo</th>
+        <th class="Table-itemHeader">Direccion</th>
+        <th class="Table-itemHeader">Ciudad</th>
+        <th class="Table-itemHeader">Departamento</th>
+        <th class="Table-itemHeader">Pais</th>
+        <th class="Table-itemHeader">Accion</th>
+        <th class="Table-itemHeader">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody class="Table-body">
+      <tr class="Table-rowBody" ng-repeat="item in vm.listaUsuarios">
+
+        <td class="Table-itemBody">{{item.id}}</td>
+        <td class="Table-itemBody">{{item.nombre}}</td>
+        <td class="Table-itemBody">{{item.apellido}}</td>
+        <td class="Table-itemBody">{{item.email}}</td>
+        <td class="Table-itemBody">{{item.tiposDocumentosId.descripcion}}</td>
+        <td class="Table-itemBody">{{item.numDocumento}}</td>
+        <td class="Table-itemBody">{{item.genero}}</td>-->
+        <td class="Table-itemBody">{{item.telefono}}</td>-->
+        <td class="Table-itemBody">{{item.direccion}}</td>-->
+        <td class="Table-itemBody">{{item.idCiudad.nombre}}</td>
+        <td class="Table-itemBody">{{item.idCiudad.idDepartamento.nombre}}</td>
+        <td class="Table-itemBody">{{item.idCiudad.idDepartamento.idPais.nombre}}</td>
+        <td class="Table-itemBody">
+          <a ui-sref="usuarios-update({idUser:item.id})" class="btn btn-primary">Editar</a>
+        </td>
+        <th class="Table-itemBody">  <md-switch ng-model="item.activo" aria-label="Switch 1" ng-change="vm.cambioEstado(item)">
+                Activo: {{item.activo}}
+              </md-switch>
+        </th>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

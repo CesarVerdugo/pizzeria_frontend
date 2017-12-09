@@ -1,0 +1,77 @@
+<section ng-hide="vm.docSelec()" class="Create" >
+  <form   class="Create-form" name="userForm"  >
+    <div class="Create-formTop">
+
+      <p class="Create-formTitle">Registrar Producto</p>
+    </div>
+    <div class="Create-formLeft">
+      <select class="Create-formSelect"  ng-model="vm.producto.clasesProductosId.id" required ng-change="vm.changeDoc()">
+        <option class="Create-formOption" value="{{item.id}}" ng-repeat="item in vm.ListaClaseProductos">{{item.nombre}}</option>
+        <option value="" disabled selected>Tipo de Producto</option>
+      </select>
+
+      <input   class="Create-formInput" name="name" type="text" ng-model="vm.producto.nombre" placeholder="nombre del producto"
+             ng-pattern="/^[a-zA-Z\s]*$/" required>
+      <span class="Error-formMessage" ng-show="userForm.name.$error.pattern">Este campo solo admite letras.</span>
+      <span class="Error-formMessage" ng-show="userForm.name.$touched && userForm.name.$invalid">Por favor, ingrese el nombre del producto.</span>
+
+      <input   class="Create-formInput" name="name" type="text" ng-model="vm.producto.precio" placeholder="precio del producto"
+      ng-pattern="/^[0-9]*$/" minlenght="5" maxlength="15" placeholder="Numero de documento" required>
+<span class="Error-formMessage" ng-show="userForm.documentNumber.$error.pattern">Este campo solo admite numeros.</span>
+<span class="Error-formMessage" ng-show="userForm.documentNumber.$touched && userForm.documentNumber.$invalid">Debe ingresar un numero de documento valido.</span>
+
+
+      <input class="Create-formInput" name="lastName" type="text" ng-model="vm.producto.descripcion" placeholder="descripcion del producto"
+             ng-pattern="/^[a-zA-Z\s]*$/" required>
+      <span class="Error-formMessage" ng-show="userForm.lastName.$error.pattern">Este campo solo admite letras.</span>
+      <span class="Error-formMessage" ng-show="userForm.lastName.$touched && userForm.lastName.$invalid">Por favor, ingrese la descripcion del producto.</span>
+
+      <md-dialog-content>
+          <label>
+              Seleccione un imágen
+          </label>
+          <input type="file" class="button " ngf-select ng-model="vm.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" >
+          <!--div class="button" ngf-select ng-model="vm.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-resize="{width: 100, height: 100}">Seleccionar Imágen</div-->
+      </md-dialog-content>
+
+      <button type="button" name="button" ng-click="vm.crearProducto()">registrar</button>
+    </div>
+
+  </form>
+
+
+
+
+<!--form class="listaProductos" >
+
+<select class="" name="" ng-model="vm.producto.clasesProductosId.id"  >
+  <option ng-value="{{item.id}}" ng-repeat="item in vm.ListaClaseProductos">{{item.nombre}}</option>
+</select>
+
+<input type="text" name="" ng-model="vm.producto.nombre" placeholder="nombre del producto">
+
+<input type="text" name="" value=""ng-model="vm.producto.descripcion" placeholder="descripcion">
+
+<input type="text" name="" value="" ng-model="vm.producto.precio" placeholder="precio">
+
+<md-dialog-content>
+    <label>
+        Seleccione un imágen
+    </label>
+    <input type="file" class="button" ngf-select ng-model="vm.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" >
+    <div class="button" ngf-select ng-model="vm.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-resize="{width: 100, height: 100}">Seleccionar Imágen</div>
+</md-dialog-content>
+<<upload-file-productos></upload-file-productos> >
+<div>
+        <label for="foto-input">
+            	       Subir Foto
+          	  </label>
+        <input type="file" id="foto-input" style="visibility:hidden;" accept="image/*" on-read-img="vm.imageLoad($fileContent)">
+    </div>
+    <div class="cropArea center-block img-responsive">
+        <img-crop image="vm.image" result-image="vm.croppedImage" area-type="rectangle" aspect-ratio="1.6" init-max-area="true" result-image-size='{w: 400,h: 250}' chargement="'Cargando'">
+        </img-crop>
+    </div>
+
+  <button type="button" name="button" ng-click="vm.crearProducto()">registrar</button>
+</form>

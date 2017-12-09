@@ -1,73 +1,225 @@
-<header class="hero-unit" id="banner">
-  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    </ol>
+<slider ng-hide="vm.authService.alluser() "></slider>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="assets/images/pizza1.jpg" alt="...">
-        <div class="carousel-caption">
 
-        </div>
-      </div>
-      <div class="item">
-        <img src="assets/images/pizza.jpg" alt="...">
-        <div class="carousel-caption">
-
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</header>
 
 <!-- menu-->
-<div class="Menu" id="menu">
-  <h1 class="text-center">MENU</h1>
-  <div class="container">
+<div ng-hide="vm.authService.alluser()" class="Menu" id="menu">
+  <h1  class="text-center">MENU</h1>
+
+<!--select class="" name="" ng-model="vm.clasesProductosId.id" ng-change="vm.getProductos()">
+  <option ng-value="item.id" ng-repeat="item in vm.listaClaseP">{{item.nombre}}</option>
+  <option value=""></option>
+</select>
+
+
+<select class="" name="" >
+  <option value="" ng-repeat="item in vm.TipoProductoSelec">{{item.nombre}}</option>
+</select-->
+
+  <div class="container MenuContainer">
     <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <article class="Productos">
-          <img class="ImagenProducto img-responsive"src="assets/images/pizza-2.jpg" alt="">
-          <span>una pizza</span>
-        </article>
-
-
+      <div class="ProductosMenu">
+          <ul ng-repeat="item in vm.listaClaseP" ng-click="vm.getProductos(item.id)" >
+              <li>
+                <button class="form-control" id="ocultar" ng-click="vm.getProductos(item.id)" ng-click="vm.ocultarPizzas()" ui-sref="productos-list({idProducto:item.id})">{{item.nombre}}</button>
+              </li>
+          </ul>
       </div>
-
     </div>
   </div>
+<!--div class="" ng-repeat="item in vm.TipoProductoSelec">
+  <ul>
+    <li>{{item}}</li>
+  </ul>
+</div-->
+<div class="" ui-view="">
 
 </div>
+<div ng-if="!vm.ocultarMenu">
+  <div class="container" ng-class="vm.estilos[vm.numero]">
+    <div class="row Todos" >
+      <div class="col-sm-6 col-md-3" ng-repeat="item in vm.TipoProductoSelec">
+        <div class="thumbnail">
+          <img  ng-src="assets/imgproductos/{{item.urlImagen}}" alt="...">
+          <!--img src="assets/images/perro.jpg" alt="..."  ng-class="vm.estilos[$index]"-->
+          <div class="caption">
+            <h3>{{item.nombre}}</h3>
+            <p>{{item.descripcion}}</p>
+            <p>{{item.precio}}</p>
+            <p><a href="#" class="btn btn-primary" role="button" ng-click="vm.agregarCarrito(item)">añadir al pedido</a> </p>
+            <p> <a href="#" class="btn btn-primary" ng-click="vm.quitarProducto(item)">quitar</a> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+</div>
 <!-- fin menu-->
 
 
+<!-- imagen >
+<upload-file></upload-file>
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
+<!--inicio mapa<! >
+<div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{vm.googleMapsUrl}}">
+  <ng-map center="41,-87" zoom="17">
+    <marker coords="vm.marker.coords" position="current" animation="Animation.BOUNCE" centered="true"></marker>
+  </ng-map>
+</div>
+{{vm.marker.coords}}
+<!--fin mapa -->
 
 
+<!-- inicio quienes somos-->
 
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in $ctrl.awesomeThings">
-        <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
+<div class="" ng-repeat="item in vm.carrito track by $index">
+  <h2>{{item.nombre}} {{item.precio}}</h2>
+
+</div>
+
+<!--inicio  modal-->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Comprar productos
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content Modal-princi">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Mis productos</h4>
+      </div>
+      <div class="modal-body Modal" ng-repeat="item in vm.carrito track by $index">
+        <p class="Modal-1">Nombre: {{item.nombre}} </p>
+        <p class="">Valor: {{item.precio}} </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar compras</button>
+        <button type="button" class="btn btn-primary">Agregar mas productos</button>
+      </div>
+
     </div>
   </div>
 </div>
+
+<!-- fin modal -->
+
+
+
+
+<h2 >total={{vm.total}}</h2>
+<div class=" QuienesS" id="quienes" ng-hide="vm.authService.alluser()">
+  <h2 class="text-center">Quienes Somos</h2>
+  <div class="container" >
+    <div class="row" >
+      <div class="col-xs-12 col-md-6  Quienes ">
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <div class="">
+          <img class="ImagenQ img-responsive " src="assets/images/pizza1.jpg" alt="">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- fin quienes somos-->
+
+<!--p>Click the button to get your coordinates.</p>
+
+<button ng-click="vm.getLocation()">Try It</button>
+
+<p id="demo">
+{{vm.ya}}
+{{vm.Longitud}}
+</p>
+
+<!--ejercicio  >
+<form class="" >
+<input type="text" name="" value="" placeholder="X1" ng-model="vm.x1">
+<input type="text" name="" value="" placeholder="y1" ng-model="vm.y1">
+<input type="text" name="" value="" placeholder="X2" ng-model="vm.x2">
+<input type="text" name="" value="" placeholder="y2" ng-model="vm.y2">
+
+<button type="button" name="button" class="btn" ng-click="vm.distancia()"> calcular </button>
+
+</form>
+
+<h2>Distancia entre los puntos = {{vm.D}}
+
+  valor x {{vm.X}}
+
+  valor Y {{vm.Y}}</h2>
+
+
+<!--ejercicio  -->
+
+<!--prueba >
+<input type="text" name="" value="" ng-model="vm.a">
+<button type="button" name="button" ng-click="vm.prueba()">prueba</button>
+<h2>{{vm.a}}</h2>
+<h1>{{vm.b}}</h1>
+
+<!--camara >
+<webcam></webcam>
+<!--camara -->
+
+
+
+<!--h2>mapa</h2>
+<google-map center="map.center"
+    			zoom="map.zoom"
+    			draggable="true"
+    			options="map.options"
+    			control="map.control">
+		<marker coords="marker.coords" options="marker.options" idkey="marker.id" ></marker>
+  </google-map-->
+
+
+<!-- inicio contactenos-->
+<div class=" Contactenos" id="contactenos" ng-hide="vm.authService.isEmpleado()">
+  <h2 class="text-center" ng-hide="vm.authService.isAdmin()">Contactenos</h2>
+  <div class="container" ng-hide="vm.authService.isEmpleado()">
+    <div class="row"ng-hide="vm.authService.isAdmin()" >
+      <div class="col-xs-12 col-sm-6 ContactenosM ">
+        <form class="form">
+          <h2>Dejar Comentario</h2>
+          <input class="form-control" type="text" name="" value="" placeholder="nombre">
+          <input class="form-control" type="text" name="" value="" placeholder="apellido">
+          <input class="form-control" type="text" name="" value="" placeholder="correo">
+        <textarea class="form-control" name="name" rows="6" cols="50"></textarea>
+          <button class="form-control" type="button" name="button">comentar</button>
+        </form>
+
+      </div>
+      <div class="">
+        <h2>Ponte en contacto</h2>
+        <p>telefono: 85678493</p>
+        <p>Celular: 324897668</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- fin contactenos-->

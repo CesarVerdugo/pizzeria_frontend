@@ -1,0 +1,98 @@
+<form class="FormularioPedidos" >
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <!--div class="form-group">
+
+        <select class="" name="" ng-model="vm.pedido.clienteId.id">
+          <option ng-value="{{item.id}}" ng-repeat="item in vm.ListaUsuarios">{{item.nombre}}</option>
+          <option value=""disabled selected>id Cliente</option>
+        </select>
+      </div-->
+      <!--div class="form-group Buscar">
+        <input type="text" class="form-control" placeholder="Search" ng-model="buscar">
+        <button type="submit" class="btn btn-success" ng-click="vm.buscar()">buscar</button>
+      </div>
+      <div class="form-group " ng-show="buscar">
+        <table class="table-bordered ">
+          <thead>
+            <tr>
+              <td >nombre</td>
+              <td>precio</td>
+            </tr>
+          </thead>
+          <tbody ng-model="vm.productosId" ng-change="vm.mostrarPedido()">
+            <tr  ng-value="{{vm.id}}"  ng-repeat="item in vm.listaProductos | filter:buscar">
+              <td>{{item.nombre}}</td>
+              <td>{{item.precio}}</td>
+              <td> <input type="checkbox" name=""  > </td>
+            </tr>
+          </tbody>
+        </table>
+      </div-->
+
+      <div class="form-group">
+        <select class="form-control" name="" ng-model="vm.clasesProductosId.id" ng-change="vm.getProductos()">
+          <option value="{{item.id}}" ng-repeat="item in vm.listaClaseProductos">{{item.nombre}}</option>
+            <option value=""disabled selected>tipo de productos</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select class="form-control" name="" ng-model="vm.productosId" ng-change="vm.mostrarPedido()">
+          <option ng-value="{{item.id}}" ng-repeat="item in vm.SeleccionProducto">{{item.nombre}}</option>
+            <option value=""disabled selected class="">nombre producto</option>
+        </select>
+      </div>
+
+
+
+
+
+      <div class="form-group">
+        <input type="number" class="form-control" name="" value="" placeholder="cantidad"  ng-model="vm.cantidad">
+
+      </div>
+
+      <button type="button" name="button" class="btn btn-default btn-lg dropdown-toggle " ng-click="vm.addProducto(); vm.valorTotal()">agregar producto</button>
+    </div>
+
+    <div class="col-sm-6">
+      <div class=" ">
+
+        <table class="table table-bordered ">
+          <thead>
+            <tr>
+              <td>nombre</td>
+              <td>precio unitario</td>
+              <td>cantidad</td>
+              <td>total</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in vm.listaProd track by $index">
+              <td>{{item.productosId.nombre}}</td>
+              <td>{{item.productosId.precio}}</td>
+              <td>{{item.cantidad}}</td>
+              <td>{{item.productosId.precio*item.cantidad}}</td>
+              <td><button type="button" name="button" ng-click="vm.removerProducto(item)">quitar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+</div>
+<div class="btn-group Boton">
+
+  <button  class="btn btn-default btn-lg dropdown-toggle " type="button" name="button"  ng-click="vm.crearPedido()">crear pedido</button>
+  <!--button class="btn btn-default btn-lg dropdown-toggle "type="button" name="button" ui-sref="factura-create({empleadoId:vm.authService.idUsuario()})" >crear factura</button-->
+</div>
+
+</form   >

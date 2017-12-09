@@ -1,0 +1,26 @@
+<section ng-hide="vm.docSelec()" class="Create" >
+  <form   class="Create-form" name="userForm"  >
+    <div class="Create-formTop">
+
+      <p class="Create-formTitle">Registrar Producto</p>
+    </div>
+    <div class="Create-formLeft">
+
+
+
+      <input   class="Create-formInput" name="name" type="text" ng-model="vm.claseP.codigo" placeholder="codigo clase producto"
+      ng-pattern="/^[0-9]*$/" minlenght="5" maxlength="15" placeholder="Numero de documento" required>
+<span class="Error-formMessage" ng-show="userForm.documentNumber.$error.pattern">Este campo solo admite numeros.</span>
+<span class="Error-formMessage" ng-show="userForm.documentNumber.$touched && userForm.documentNumber.$invalid">Debe ingresar un numero de documento valido.</span>
+
+      <input   class="Create-formInput" name="name" type="text" ng-model="vm.claseP.nombre" placeholder="clase producto"
+             ng-pattern="/^[a-zA-Z\s]*$/" required>
+      <span class="Error-formMessage" ng-show="userForm.name.$error.pattern">Este campo solo admite letras.</span>
+      <span class="Error-formMessage" ng-show="userForm.name.$touched && userForm.name.$invalid">Por favor, ingrese el nombre clase producto.</span>
+
+
+
+      <button type="button" name="button" ng-click="vm.crearClaseProducto()">registrar</button>
+    </div>
+
+  </form>

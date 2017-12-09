@@ -1,0 +1,22 @@
+<div class="TodosEmpleados">
+  <h2>Lista de Empleados</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+
+        <td>nombre</td>
+        <td>apellido</td>
+        <td>correo</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in vm.listaEmpleados track by $index">
+
+        <td>{{item.nombre}}</td>
+        <td>{{item.apellido}}</td>
+        <td>{{item.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

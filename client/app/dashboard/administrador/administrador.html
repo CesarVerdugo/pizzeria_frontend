@@ -1,0 +1,103 @@
+
+
+
+
+
+
+
+
+<!--div class="Administrador" ng-hide="vm.authService.alluser()" >
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="nav  navbar-nav">
+        <li ng-hide="vm.authService.alluser()" ng-repeat="item in vm.menu" ui-sref-active="active">
+            <a ui-sref="{{item.state}}">{{item.title}}</a>
+
+        </li>
+
+
+        <li class="LogoAdmin">
+          <img src="assets/images/logo.jpeg" alt="">
+        </li>
+        <li >
+            <a ui-sref="factura-create">craer facturas</a>
+        </li>
+        <li >
+          <a ui-sref="pedidos-create">crear pedidos</a>
+        </li>
+
+          <li>
+            <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    empleados
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a ui-sref="empleados-create">crear empleado</a></li>
+    <li><a ui-sref="empleados-list">lista empleados</a></li>
+
+  </ul>
+</div>
+
+            </li>
+            <li><a ui-sref="administradores-create">crear administrador</a></li>
+            <li>
+              <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Productos
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li> <a ui-sref="productos-list"> lista de productos</a></li>
+      <li><a  ui-sref="productos-create">crear productos</a></li>
+
+    </ul>
+  </div>
+
+              </li>
+
+
+
+
+
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+<!--div class="modal fade bs-example-modal-md" id="Fotomodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">foto de perfil</h4>
+      </div>
+      <div class="modal-body">
+
+
+        <div id="webcam">
+          <webcam channel="vm.webcam.channel" on-streaming="vm.webcam.onSuccess()" on-error="vm.webcam.onError(err)" on-stream="vm.webcam.onStream(stream)"></webcam>
+          <canvas ng-hide="true" id="snapshot" width="500" height="500"></canvas>
+        </div>
+
+        <img data-ng-src="{{vm.p}}" alt="img">
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.cancelar()">Cancelar</button>
+        <button type="button" class="btn btn-default" ng-click="vm.snapShot()">tomar foto</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="vm.subir(vm.croppedImage, vm.file.name )">Guardar</button>
+        <!-- <input type="file" id="foto-input" style="visibility:hidden;" accept="image/*" on-read-img="vm.imageLoad($fileContent)"> -->
+      <!--/div>
+    </div>
+  </div>
+</div>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#Fotomodal" >Modal</button>

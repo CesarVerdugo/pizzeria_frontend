@@ -17,6 +17,16 @@ this.usuariosService.query().$promise
 
 }
 
+cambioEstado(item) {
+  this.usuariosService.update(item).$promise
+  .then(response => {
+    console.log("Cambio Estado OK...", response);
+  }).catch(err => {
+    console.log("ERROR Estado...", err);
+  })
+}
+
+
 }
 UsuariosListComponent.$inject=['usuariosService']
 angular.module('pizzeriaApp')

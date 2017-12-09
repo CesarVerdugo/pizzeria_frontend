@@ -1,17 +1,209 @@
-<div class="Header">
-  <div class="container">
-    <div class="row">
-      <div class="col-sx-12 col-sm-6 ">
-        <a class="BotonInicio "type="button" name="button" ui-sref="login">iniciar sesion</a>
-        <button class="" type="button" name="button" ui-sref="usuarios-create">registrarse</button>
+<div class="THeader">
+  <div class="Header">
+    <div ng-hide="vm.authService.alluser()"class="container">
+      <div class="row LogoBoton">
+        <div class="col-sx-12 col-sm-12 Botones ">
+          <div class="">
+            <a class="BotonInicio "type="button" name="button" ui-sref="login">iniciar sesion</a>
+            <a class="" type="button" name="button" ui-sref="usuarios-create">registrarse</a>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="LogoBoton">
+      <div class="Botones">
+        <li ng-show="vm.authService.isAuthenticated()"  class="Navbar-item" >
+            <h2 ng-click="" class="Nombre"> Bienvenido {{vm.authService.userlog()}} </h2>
+            </li>
+
+            <!--li>  <button ng-show="vm.authService.isAdmin()"  class="btn btn-primary" ui-sref="usuarios-list">lista de usuarios</button></li-->
+
+      </div>
+      <div class="dropdown MoverLi" ng-show="vm.authService.isAuthenticated()">
+
+<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+<i class="fa fa-bars" aria-hidden="true"></i>
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+<li ng-show="vm.authService.alluser()"><button type="button" name="button" ng-click="vm.authService.logout()" class="btn btn-primary form-control">cerrar sesion</button></li>
+<li ng-show="vm.authService.alluser()">  <button ui-sref="usuarios-update({idUser:vm.authService.idUsuario()})" class="btn btn-primary form-control">Editar perfil</button></li>
+
+
+</ul>
+</div>
+    </div>
+
+  </div>
+
+
+  <!-- inicio navbar-->
+  <div class="Nabvar">
+    <div class="container">
+      <div class="row NavbarMenu">
+        <div class="col-xs-12 NavbarItem">
+          <ul  ng-hide="vm.authService.allPIZZA() " class="">
+            <li > <button  class=" form-control" ui-sref="main">Inicio</button></li>
+            <li ><a class=" form-control"   href="#menu">Menu</a></li>
+            <li class="Logo"><img src="assets/images/logo.jpeg" alt=""></li>
+            <li ><a class=" form-control"  href="#quienes">quienes somos</a></li>
+            <li  ><a  class=" form-control" href="#contactenos">contactenos</a></li>
+
+
+          <!--/ul>
+          <ul class="nav  navbar-nav">
+            <!--li ng-hide="vm.authService.alluser()" ng-repeat="item in vm.menu" ui-sref-active="active">
+                <a ui-sref="{{item.state}}">{{item.title}}</a>
+
+            </li>
+
+            <!li ng-hide="vm.authService.isAdmin() "  >
+              <a class="navbar-nav"ng-hide="vm.authService.isEmpleado()" href="#menu">Menu</a>
+            </li-->
+            <!--li ng-show="vm.authService.allPIZZA()" class="Logo">
+              <img src="assets/images/logo.jpeg" alt="">
+            </li>
+            <li ng-show="vm.authService.isAdmin()">
+                <a ng-show="vm.authService.isEmpleado()" ui-sref="factura-create">craer facturas</a>
+            </li>
+            <li ng-show="vm.authService.isAdmin()">
+              <a ng-show="vm.authService.isEmpleado()"  ui-sref="pedidos-create">crear pedidos</a>
+            </li>
+
+              <li><a ng-show="vm.authService.isAdmin()"ui-sref="empleados-create">crear empleado</a></li>
+                <li><a ng-show="vm.authService.isAdmin()"ui-sref="administradores-create">crear administrador</a></li>
+                <li> <a ng-show="vm.authService.isAdmin()"ui-sref="empleados-list">lista empleados</a></li>
+                <!--li> <a ui-sref="productos-list"> productos</a></li-->
+                <!--li><a ng-show="vm.authService.isAdmin()" ui-sref="productos-create">crear productos</a></li>
+
+
+
+
+          </ul-->
+        </div>
+
+        <div class="" ng-repeat=" item in vm.carrito">
+          <h2>{{item.nombre}}</h2>
+        </div>
+
       </div>
     </div>
   </div>
+<!-- fin navbar-->
+
+
+
+<!-- inicio navbar administrador-->
+
+<div class="Administrador" ng-show="vm.authService.isAdmin()" >
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="nav  navbar-nav">
+
+        <li class="LogoAdmin">
+          <img src="assets/images/logo.jpeg" alt="">
+        </li>
+          <li>  <a ng-show="vm.authService.isAdmin()"  class="" ui-sref="usuarios-list">lista de usuarios</a></li>
+        <li >
+            <a ui-sref="factura-create">craer facturas</a>
+        </li>
+        <li >
+          <a ui-sref="pedidos-create">crear pedidos</a>
+        </li>
+        <li >
+          <a ui-sref="claseProductos-create">crear clase producto</a>
+        </li>
+
+          <li class="MoverLi">
+            <div class="dropdown">
+  <a class=" dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    empleados
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a ui-sref="empleados-create">crear empleado</a></li>
+    <li><a ui-sref="empleados-list">lista empleados</a></li>
+
+  </ul>
+</div>
+
+            </li>
+            <li><a ui-sref="administradores-create">crear administrador</a></li>
+            <li class="MoverLi">
+              <div class="dropdown">
+    <a class=" dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Productos
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li> <a ui-sref="productos-list"> lista de productos</a></li>
+      <li><a  ui-sref="productos-create">crear productos</a></li>
+
+    </ul>
+  </div>
+
+              </li>
+
+
+
+
+
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- fin navbar administrador-->
+
+<!-- inicio navbar empleado-->
+<div class="Administrador" ng-show="vm.authService.isEmpleado()" >
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="nav  navbar-nav">
+
+        <li class="LogoAdmin">
+          <img src="assets/images/logo.jpeg" alt="">
+        </li>
+
+        <li >
+          <a ui-sref="pedidos-create">crear pedidos</a>
+        </li>
+
+        <li >
+            <a ui-sref="factura-create">craer facturas</a>
+        </li>
+
+
+
+
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<!-- fin navbar empleado -->
+
+
+
 
 </div>
 
-<div class="navbar navbar-default navbar-static-top" >
-  <div class="container">
+
+<!--div class="navbar navbar-default navbar-static-top" >
+  <div class="container NavbarMenu">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="vm.isCollapsed = !vm.isCollapsed">
         <span class="sr-only">Toggle navigation</span>
@@ -19,23 +211,39 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a ng-hide="vm.authService.alluser()" href="/" class="navbar-brand">pizzeria</a>
+      <a ng-hide="vm.authService.alluser()" href="" class="navbar-brand">Pizzeria Che Delizia</a>
     </div>
-    <div uib-collapse="vm.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
+    <div uib-collapse="vm.isCollapsed" class=" NavbarItem navbar-collapse collapse" id="navbar-main">
+      <ul class="nav  navbar-nav">
         <li ng-hide="vm.authService.alluser()" ng-repeat="item in vm.menu" ui-sref-active="active">
             <a ui-sref="{{item.state}}">{{item.title}}</a>
 
         </li>
 
-        <li ng-hide="vm.authService.isAdmin()">
-          <a href="#menu">Menu</a>
+        <li ng-hide="vm.authService.isAdmin() "  >
+          <a class="navbar-nav"ng-hide="vm.authService.isEmpleado()" href="#menu">Menu</a>
         </li>
+        <li class="Logo">
+          <img src="assets/images/logo.jpeg" alt="">
+        </li>
+        <li>
+            <a ng-show="vm.authService.isEmpleado()" ui-sref="factura-create">craer facturas</a>
+        </li>
+        <li>
+          <a ng-show="vm.authService.isEmpleado()"  ui-sref="pedidos-create">crear pedidos</a>
+        </li>
+
         <li ng-show="vm.authService.alluser()"  class="Navbar-item" >
             <h2 ng-click="">{{vm.authService.userlog()}} </h2>
             <button ng-show="vm.authService.isAdmin()"  class="btn btn-primary" ui-sref="usuarios-list">lista de usuarios</button>
             <button type="button" name="button" ng-click="vm.authService.logout()" class="btn btn-primary">cerrar sesion</button>
             <button ui-sref="usuarios-update({idUsers:vm.authService.idUsuario()})" class="btn btn-primary">Editar perfil</button>
+            <a ng-show="vm.authService.isAdmin()"ui-sref="empleados-create">crear empleado</a>
+            <a ng-show="vm.authService.isAdmin()"ui-sref="administradores-create">crear administrador</a>
+            <a ng-show="vm.authService.isAdmin()"ui-sref="empleados-list">lista empleados</a>
+            <a ui-sref="productos-list"> productos</a>
+            <a ng-show="vm.authService.isAdmin()" ui-sref="productos-create">crear productos</a>
+
 
           </li>
       </ul>

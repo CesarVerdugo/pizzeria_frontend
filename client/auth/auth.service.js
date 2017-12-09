@@ -10,7 +10,9 @@ function authService($auth,$state) {
 		isAuthenticated:isAuthenticated,
 		userlog:userlog,
 		alluser:alluser,
-		idUsuario:idUsuario
+		idUsuario:idUsuario,
+		isEmpleado:isEmpleado,
+		allPIZZA:allPIZZA
  	};
 
  	function login(user,collback){
@@ -19,8 +21,20 @@ function authService($auth,$state) {
  		.then(response => {
  			console.log('Login ok',response);
 			console.log("es admin "+Auth.isAdmin());
+			console.log("es empleado "+Auth.isEmpleado());
+			console.log("id de usuario "+ Auth.idUsuario());
 			Auth.isAdmin();
- 			$state.go('main');
+			if (Auth.isAdmin()) {
+				console.log("es admin al login",);
+				$state.go('administrador');
+			}else if(Auth.isEmpleado()) {
+				$state.go('empleado');
+				console.log("es empleado al login",);
+			}else {
+				$state.go('main');
+
+			}
+
  		})
  		.catch(err =>{
  			console.log('Error de login',err);
@@ -36,8 +50,18 @@ function authService($auth,$state) {
 					}
 				}
 
+
+				function allPIZZA() {
+					if((Auth.isAdmin()) || (Auth.isEmpleado())){
+						return true;
+					}else{
+						return false;
+					}
+				}
+
+
 				function alluser() {
-					if((Auth.isAdmin()) || (Auth.isUser()) ){
+					if((Auth.isAdmin()) || (Auth.isUser()) ||(Auth.isEmpleado())){
 						return true;
 					}else{
 						return false;
@@ -62,7 +86,7 @@ function authService($auth,$state) {
 
 					function isAdmin(){
 						if(Auth.isAuthenticated()){
-							console.log("roles",$auth.getPayload().roles);
+							//console.log("roles",$auth.getPayload().roles);
 								if($auth.getPayload().roles.indexOf("ADMIN") !== -1){
 									return true;
 								}else{
@@ -79,6 +103,20 @@ function authService($auth,$state) {
 						if(Auth.isAuthenticated()){
 
 								if($auth.getPayload().roles.indexOf("USER") !== -1){
+									return true;
+								}else{
+									return false;
+								}
+						}else{
+							return false;
+						}
+					}
+
+
+					function isEmpleado(){
+						if(Auth.isAuthenticated()){
+
+								if($auth.getPayload().roles.indexOf("EMPLEADO") !== -1){
 									return true;
 								}else{
 									return false;
